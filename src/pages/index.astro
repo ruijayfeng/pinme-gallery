@@ -1,10 +1,113 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Footer from '../components/Footer.astro';
+import projects from '../data/projects.json';
 ---
 
 <Layout title="PinMe Gallery - 一时兴起的创意画廊">
+  <Header />
   <main>
-    <h1>PinMe Gallery</h1>
-    <p>一时兴起用 PinMe 部署的各种页面</p>
+    <Hero />
+    <section class="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">项目展示</h2>
+          <p class="section-description">探索一时兴起用 PinMe 部署的各种页面</p>
+        </div>
+        <div class="grid">
+          {projects.map((project, index) => (
+            <ProjectCard {...project} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
   </main>
+  <Footer />
 </Layout>
+
+<script>
+  import { initAllAnimations } from '../scripts/animations.js';
+  
+  // 等待 DOM 加载完成
+  document.addEventListener('DOMContentLoaded', () => {
+    initAllAnimations();
+  });
+</script>
+
+<style>
+  .projects {
+    padding: var(--space-24) 0;
+    background: var(--color-bg);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-description {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-8);
+  }
+
+  @media (max-width: 768px) {
+    .projects {
+      padding: var(--space-16) 0;
+    }
+
+    .section-header {
+      margin-bottom: var(--space-12);
+    }
+
+    .section-title {
+      font-size: var(--text-3xl);
+    }
+
+    .section-description {
+      font-size: var(--text-base);
+      padding: 0 var(--space-4);
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .projects {
+      padding: var(--space-12) 0;
+    }
+
+    .section-header {
+      margin-bottom: var(--space-8);
+    }
+
+    .section-title {
+      font-size: var(--text-2xl);
+    }
+
+    .grid {
+      gap: var(--space-4);
+    }
+  }
+</style>

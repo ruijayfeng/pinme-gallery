@@ -1,0 +1,203 @@
+---
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <span class="logo-bracket">{</span>
+          <span class="logo-text">PinMe</span>
+          <span class="logo-bracket">}</span>
+        </div>
+        <p class="footer-description">一时兴起用 PinMe 部署的各种页面</p>
+      </div>
+      <div class="footer-center">
+        <div class="footer-links">
+          <a href="/" class="footer-link">首页</a>
+          <a href="/recent" class="footer-link">最近</a>
+          <a href="/categories" class="footer-link">分类</a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-social">
+          <a href="https://github.com/ruijayfeng" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://pinme.eth.limo" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="PinMe">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 冯哲. All rights reserved.</p>
+      <p class="footer-powered">Powered by <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> + <a href="https://gsap.com" target="_blank" rel="noopener noreferrer">GSAP</a></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border-light);
+    padding: var(--space-16) 0 var(--space-8);
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-12);
+    margin-bottom: var(--space-12);
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .logo-bracket {
+    font-family: var(--font-mono);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  .logo-text {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-primary);
+  }
+
+  .footer-description {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+  .footer-center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer-link {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--duration-normal) var(--ease-out);
+  }
+
+  .footer-link:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg);
+    color: var(--color-text-secondary);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .social-link:hover {
+    background: var(--color-accent);
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .footer-copyright {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    margin: 0;
+  }
+
+  .footer-powered {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    margin: 0;
+  }
+
+  .footer-powered a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .footer-powered a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      text-align: center;
+    }
+
+    .footer-left {
+      align-items: center;
+    }
+
+    .footer-center {
+      justify-content: center;
+    }
+
+    .footer-links {
+      flex-direction: row;
+      gap: var(--space-6);
+    }
+
+    .footer-right {
+      justify-content: center;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: var(--space-4);
+      text-align: center;
+    }
+  }
+</style>

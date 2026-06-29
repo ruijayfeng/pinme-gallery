@@ -1,0 +1,299 @@
+---
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">PinMe Gallery</h1>
+      <p class="hero-subtitle">一时兴起用 PinMe 部署的各种页面</p>
+      <p class="hero-description">像走进一间安静的画廊，每个页面都是一幅画</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">12</span>
+          <span class="stat-label">个项目</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">5</span>
+          <span class="stat-label">种技术栈</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">种创意</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-decoration">
+      <div class="decoration-circle circle-1"></div>
+      <div class="decoration-circle circle-2"></div>
+      <div class="decoration-circle circle-3"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 200px 0 120px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-7xl);
+    font-weight: 700;
+    letter-spacing: var(--tracking-tighter);
+    margin-bottom: var(--space-6);
+    line-height: var(--leading-none);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.8s var(--ease-out-quart) 0.2s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-sans);
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.8s var(--ease-out-quart) 0.4s forwards;
+  }
+
+  .hero-description {
+    font-family: var(--font-sans);
+    font-size: var(--text-lg);
+    color: var(--color-text-tertiary);
+    max-width: 500px;
+    margin: 0 auto var(--space-12);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.8s var(--ease-out-quart) 0.6s forwards;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-8);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.8s var(--ease-out-quart) 0.8s forwards;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .stat-number {
+    font-family: var(--font-serif);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: var(--leading-none);
+  }
+
+  .stat-label {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--color-border);
+  }
+
+  .hero-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  .decoration-circle {
+    position: absolute;
+    border-radius: var(--radius-full);
+    opacity: 0.1;
+  }
+
+  .circle-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-accent);
+    top: -100px;
+    right: -100px;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .circle-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--color-accent);
+    bottom: -50px;
+    left: -50px;
+    animation: float 8s ease-in-out infinite reverse;
+  }
+
+  .circle-3 {
+    width: 200px;
+    height: 200px;
+    background: var(--color-accent);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: float 10s ease-in-out infinite;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 160px 0 80px;
+    }
+
+    .hero-title {
+      font-size: var(--text-5xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-3);
+    }
+
+    .hero-description {
+      font-size: var(--text-base);
+      margin-bottom: var(--space-8);
+      padding: 0 var(--space-4);
+    }
+
+    .hero-stats {
+      gap: var(--space-6);
+    }
+
+    .stat-number {
+      font-size: var(--text-3xl);
+    }
+
+    .stat-label {
+      font-size: var(--text-xs);
+    }
+
+    .stat-divider {
+      height: 30px;
+    }
+
+    /* 缩小装饰圆圈 */
+    .circle-1 {
+      width: 200px;
+      height: 200px;
+      top: -50px;
+      right: -50px;
+    }
+
+    .circle-2 {
+      width: 150px;
+      height: 150px;
+      bottom: -30px;
+      left: -30px;
+    }
+
+    .circle-3 {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding: 140px 0 60px;
+    }
+
+    .hero-title {
+      font-size: var(--text-4xl);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-lg);
+    }
+
+    .hero-stats {
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .stat-divider {
+      width: 40px;
+      height: 1px;
+    }
+
+    /* 更小的装饰圆圈 */
+    .circle-1 {
+      width: 120px;
+      height: 120px;
+      top: -30px;
+      right: -30px;
+    }
+
+    .circle-2 {
+      width: 80px;
+      height: 80px;
+      bottom: -20px;
+      left: -20px;
+    }
+
+    .circle-3 {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  /* 减少动画 */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title,
+    .hero-subtitle,
+    .hero-description,
+    .hero-stats {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .decoration-circle {
+      animation: none;
+    }
+  }
+</style>

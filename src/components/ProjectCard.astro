@@ -1,0 +1,282 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  techStack: string[];
+  pinmeUrl: string;
+  createdAt: string;
+  category: string;
+  index?: number;
+}
+
+const { title, description, techStack, pinmeUrl, createdAt, category, index = 0 } = Astro.props;
+---
+
+<article class="card" style={`animation-delay: ${index * 0.1}s`}>
+  <div class="card-image">
+    <div class="card-image-placeholder">
+      <span class="card-image-icon">🌐</span>
+      <span class="card-image-text">{category}</span>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="card-header">
+      <h3 class="card-title">{title}</h3>
+      <span class="card-date">{createdAt}</span>
+    </div>
+    <p class="card-description">{description}</p>
+    <div class="card-tags">
+      {techStack.map((tech) => (
+        <span class="card-tag">{tech}</span>
+      ))}
+    </div>
+    <div class="card-footer">
+      <a href={pinmeUrl} class="card-link" target="_blank" rel="noopener noreferrer">
+        访问项目
+        <svg class="card-link-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .card {
+    background: var(--color-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--duration-slow) var(--ease-out-quart);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.6s var(--ease-out-quart) forwards;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    background: var(--color-bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+  }
+
+  .card-image-icon {
+    font-size: var(--text-5xl);
+    opacity: 0.8;
+  }
+
+  .card-image-text {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--color-text-tertiary);
+  }
+
+  .card-content {
+    padding: var(--space-6);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-3);
+  }
+
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: var(--leading-tight);
+    margin: 0;
+  }
+
+  .card-date {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+    margin-left: var(--space-3);
+  }
+
+  .card-description {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .card-tag {
+    background: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .card:hover .card-tag {
+    background: var(--color-accent);
+    color: white;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: var(--color-accent);
+    color: white;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .card-link:hover {
+    background: var(--color-accent-hover);
+    transform: translateX(4px);
+    color: white;
+  }
+
+  .card-link-icon {
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .card-link:hover .card-link-icon {
+    transform: translateX(4px);
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card-image {
+      height: 140px;
+    }
+
+    .card-image-icon {
+      font-size: var(--text-4xl);
+    }
+
+    .card-content {
+      padding: var(--space-4);
+    }
+
+    .card-header {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .card-date {
+      margin-left: 0;
+    }
+
+    .card-title {
+      font-size: var(--text-lg);
+    }
+
+    .card-description {
+      font-size: var(--text-sm);
+      -webkit-line-clamp: 2;
+      margin-bottom: var(--space-3);
+    }
+
+    .card-tags {
+      gap: var(--space-1);
+      margin-bottom: var(--space-4);
+    }
+
+    .card-tag {
+      padding: var(--space-1) var(--space-2);
+      font-size: 0.625rem; /* 10px */
+    }
+
+    .card-link {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-xs);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card-image {
+      height: 120px;
+    }
+
+    .card-content {
+      padding: var(--space-3);
+    }
+
+    .card-title {
+      font-size: var(--text-base);
+    }
+  }
+
+  /* 减少动画 */
+  @media (prefers-reduced-motion: reduce) {
+    .card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .card:hover {
+      transform: none;
+    }
+
+    .card-link:hover {
+      transform: none;
+    }
+
+    .card-link:hover .card-link-icon {
+      transform: none;
+    }
+  }
+</style>
